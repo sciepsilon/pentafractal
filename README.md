@@ -1,2 +1,10 @@
 # pentafractal
-Exploring fractal designs with programmatic tools.
+Exploring fractal designs with programmatic tools. 
+
+The design explored here consists of pentagons (hence "pentafractal") and triangles. It's based on nested pentagrams- that is, a succession of five-pointed stars, each inscribed in the central pentagon of the previous one. I wanted the design to have more-uniformly-sized pieces, so whenever I draw a new central pentagram, I also fragment all the triangles outside the central pentagon. Each triangle is fragmented into six pieces by splitting along its medians. Using medians instead of angle bisectors makes splits from adjacent triangles align, since every split occurs through the midpoint of a triangle's side. 
+
+To draw these designs, I used Java in combination with the Tikz drawing package of LaTeX. The Java code performs geometric calculations and prints Tikz code for the resulting shape. The output can be copy-pasted into a ```tikzpicture``` environment to display the fractal. The recursive depth, size, and location of the fractal are specified as parameters to the Java ```pentafractal``` method, and any Tikz format options, such as line width and fill color, may be passed to the ```toLatex``` method as a string. Since the geometry and LaTeX are handled separately, the program could easily be adapted for other graphics platforms. 
+
+The design looks particularly stunning if each shape is given a random-color fill. Random coloring is accomplished with a ```\randomcolor``` command defined in the preamble of the LaTeX document, which redefines ```randomcolor``` as a new RGB color each time it is invoked. 
+
+The PDF file gives examples of the effects a "pentafractal" drawing can have, and the corresponding ```.tex``` file shows how these are accomplished. I encourage you to generate your own pentafractal designs! Expect it to take under a minute to generate code for a fractal with 4 levels of recursion, and 15 seconds or less to compile the corresponding LaTeX document; the time increases about tenfold for each level of recursion. 
